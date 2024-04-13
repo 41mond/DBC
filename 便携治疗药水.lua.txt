@@ -1,0 +1,10 @@
+local s = self
+local p = CS.Player
+
+local x = 800 * (1 + ((s.skillLevel - 1) * 0.2))
+
+s:Heal(800)
+s.audioManager:Play("healing");
+s:addText("你使用了“便携治疗药水”，恢复" .. math.floor(x) .. "点生命值。\n")
+local green = CS.UnityEngine.Color(0, 1, 0)
+s:effect("+".. math.floor(x), green, true)

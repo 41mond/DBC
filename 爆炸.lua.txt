@@ -1,0 +1,22 @@
+local s = self
+local p = CS.Player
+local sk = CS.Skills
+local sb = CS.SkillButton
+
+local lb = CS.UnityEngine.Color(0.5, 0.5, 1)
+
+local card = sb.FindCardEX("冲击")
+
+local x = 10 * (1 + ((s.skillLevel - 1) * 0.2))
+p.energy = p.energy + math.floor(x)
+s:effect("+".. math.floor(x), lb, true)
+s.audioManager:Play("click");
+
+for i=1,2 do
+	local skill = CS.Skills()
+
+	skill = sk.copySkills(card,s.skillLevel)
+	sb.AddToHand(skill)
+end
+
+s:addText("你使用了“爆炸”，获得" .. math.floor(x) .. "点能量，将两张冲击置入手牌。\n")

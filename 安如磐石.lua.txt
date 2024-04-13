@@ -1,0 +1,12 @@
+local s = self
+local p = CS.Player
+local sll = CS.Skill_Lua_Library
+
+s.audioManager:Play("Halberd");
+local x = 2500 * (1 + ((s.skillLevel - 1) * 0.2))
+if p.shield >= 2500 then
+	sll.AddShield(math.floor(x))
+	s:addText("你使用了“安如磐石”，获得" .. math.floor(x) .. "点护甲值。\n")
+else
+	s:addText("你使用了“安如磐石”，无效果。\n")
+end

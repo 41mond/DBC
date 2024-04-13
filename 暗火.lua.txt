@@ -1,0 +1,12 @@
+local s = self
+local p = CS.Player
+local e = CS.Enemy
+local eb = CS.EnemyBehavior
+
+s.audioManager:Play("sword");
+e.burns = e.burns + 3
+
+local y = 600 * (1 + ((s.skillLevel - 1) * 0.2))
+eb.LoseHealth(math.floor(y))
+
+s:addText("你使用了“暗火”，造成" .. math.floor(y) .. "点破甲伤害，使敌人获得3层灼伤。\n")

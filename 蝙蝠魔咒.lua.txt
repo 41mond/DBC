@@ -1,0 +1,11 @@
+local s = self
+local p = CS.Player
+
+s.audioManager:Play("injure1");
+local x = p.attack * 2 * (1 + ((s.skillLevel - 1) * 0.2))
+s:addText("你使用了“蝙蝠魔咒”，造成" .. math.floor(x) .. "点伤害，恢复等量的生命值。\n")
+local red = CS.UnityEngine.Color(1, 0, 0)
+s:effect("-".. math.floor(x), red)
+s:Damage(p.attack * 2,0.2)
+
+s:Heal(math.floor(x))

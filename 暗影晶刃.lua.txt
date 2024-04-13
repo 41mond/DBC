@@ -1,0 +1,12 @@
+local s = self
+local p = CS.Player
+
+
+s.audioManager:Play("injure1");
+local x = math.floor(p.attack * 3 * (1 + ((s.skillLevel - 1) * 0.2)))
+s:addText("你使用了“暗影晶刃”，造成" .. x .. "点伤害，获得2点行动点数。\n")
+local red = CS.UnityEngine.Color(1, 0, 0)
+s:effect("-".. x, red)
+s.animationController:Play("SwordLight");
+s:Damage(p.attack * 3,0.2)
+p.actionPoint = p.actionPoint + 2
